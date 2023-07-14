@@ -12,6 +12,7 @@ public class NPC_controller : MonoBehaviour
     {
         angry_pig = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
