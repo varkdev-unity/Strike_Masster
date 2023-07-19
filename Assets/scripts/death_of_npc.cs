@@ -14,14 +14,14 @@ public class death_of_npc : MonoBehaviour
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("dangers_for_npc"))
+        if (collision.gameObject.CompareTag("danger_for_np"))
         {
             Die();
         }
     }
     private void Die()
     {
-        angry_pig.SetTrigger("Death");
+        angry_pig.SetTrigger("death");
 
     }
 }

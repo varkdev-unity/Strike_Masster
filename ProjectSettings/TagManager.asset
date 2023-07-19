@@ -8,6 +8,7 @@ TagManager:
   - apple
   - finish_item
   - dangers_for_npc
+  - danger_for_np
   layers:
   - Default
   - TransparentFX

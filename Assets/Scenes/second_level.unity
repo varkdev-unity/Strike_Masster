@@ -4668,6 +4668,8 @@ GameObject:
   - component: {fileID: 665332604}
   - component: {fileID: 665332603}
   - component: {fileID: 665332605}
+  - component: {fileID: 665332606}
+  - component: {fileID: 665332607}
   m_Layer: 0
   m_Name: angry_pig
   m_TagString: danger
@@ -4683,7 +4685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665332598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.223, y: -1.291, z: 0.036202103}
+  m_LocalPosition: {x: 4.223, y: -1.291, z: 0.0362021}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4869,6 +4871,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &665332606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665332598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5867535c64f18eb49aa9c9c38898d87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &665332607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665332598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780d5c3495c71204ebc143c4767074d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675486196
 GameObject:
   m_ObjectHideFlags: 0
@@ -6450,7 +6476,7 @@ GameObject:
   - component: {fileID: 850355079}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: dangers_for_npc
+  m_TagString: danger_for_np
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12313,7 +12339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745733054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.92, y: 0.58, z: 0.036202103}
+  m_LocalPosition: {x: 1.9, y: -1.13, z: 0.036202103}
   m_LocalScale: {x: 2.073, y: 2.3106, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
