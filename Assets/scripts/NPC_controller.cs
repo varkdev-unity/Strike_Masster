@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows.Speech;
 
 public class NPC_controller : MonoBehaviour
 {
+    [SerializeField] private float speed;
+    [SerializeField] private Transform selfTransform;
+    private Vector2 target;
+    
     private Animator angry_pig;
     private Rigidbody2D rb;
     private bool isFollowing = false;
@@ -20,7 +25,9 @@ public class NPC_controller : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerMovement>())
         {
             FollowEnemy(collision.gameObject);
-            angry_pig.SetTrigger("idle_to_attack");
+            angry_pig.SetBool("Run", true);
+
+            target = new Vector2(collision.transform.position.x, selfTransform.position.y);
             isFollowing = true;
         }
     }
@@ -29,7 +36,8 @@ public class NPC_controller : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerMovement>())
         {
-            angry_pig.SetTrigger("attack_to_idle");
+            angry_pig.SetBool("Run", false);
+            target = new Vector2(selfTransform.position.x, selfTransform.position.y);
             isFollowing = false;
             rb.velocity = Vector2.zero; // Stop NPC's movement
         }
@@ -37,11 +45,9 @@ public class NPC_controller : MonoBehaviour
 
     void FollowEnemy(GameObject enteredObject)
     {
-        if (isFollowing)
+        if (isFollowing && Player_death.PlayerDie)
         {
-            Vector3 direction = enteredObject.transform.position - transform.position;
-            rb.AddForce(direction);
+            selfTransform.position = Vector2.MoveTowards(selfTransform.position, target, speed * Time.deltaTime);
         }
     }
-
 }

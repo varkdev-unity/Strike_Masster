@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public static bool PlayerIsGrounded;
     public static int healthOfPlayer = 9;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
@@ -82,8 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        PlayerIsGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        return PlayerIsGrounded;
     }
-
-
 }
