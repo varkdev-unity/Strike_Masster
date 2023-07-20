@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PigDeath : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Action OnDie;
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable() => OnDie += Kill;
+    private void OnDisable()=> OnDie -= Kill;
+
+    private void Kill()
     {
-        
+        Destroy(gameObject, 1);
     }
 }

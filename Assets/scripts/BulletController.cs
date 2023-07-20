@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
     public float speed = 6f; // Скорость движения пули
-
     private Rigidbody2D rb;
 
     private void Start()
@@ -11,18 +11,14 @@ public class BulletController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed; // Применяем скорость вправо
     }
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-      // if (other.gameObject.name == "angry_pig")
-       // {
-       //     // Обнаружено столкновение с объектом "angry_pig"
-        //    Destroy(gameObject); // Уничтожаем пулю
-       // }
- //   }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        // Дополнительные действия или логика пули (если нужно)
+        if (other.gameObject.CompareTag("danger"))
+        {
+            other.gameObject.GetComponent<PigDeath>().OnDie.Invoke();
+        }
+        Destroy(gameObject, 0.2f);
     }
 }
 

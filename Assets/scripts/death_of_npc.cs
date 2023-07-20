@@ -22,6 +22,5 @@ public class death_of_npc : MonoBehaviour
     private void Die()
     {
         angry_pig.SetTrigger("death");
-
     }
 }
