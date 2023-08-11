@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState { idle, running, jumping, falling }
 
     [SerializeField] private AudioSource jumpSoundEffect;
+    public static float direction;
+    private bool _seeToRight = true;
 
     // Start is called before the first frame update
     private void Start()
@@ -51,21 +53,23 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementState state;
 
-        if (dirX > 0f)
+        if (dirX > 0f && !_seeToRight)
         {
-            state = MovementState.running;
-            sprite.flipX = false;
+            // sprite.flipX = false;
+            Flip();
+            direction = 1;
         }
-        else if (dirX < 0f)
+        else if (dirX < 0f && _seeToRight)
         {
-            state = MovementState.running;
-            sprite.flipX = true;
+            // sprite.flipX = true;
+            Flip();
+            direction = -1;
         }
-        else
-    
-        {
+        
+        if (dirX != 0)
+            state = MovementState.running;
+        else 
             state = MovementState.idle;
-        }
 
         if (rb.velocity.y > .1f)
         {
@@ -84,5 +88,12 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerIsGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
         return PlayerIsGrounded;
+    }
+    private void Flip()
+    {
+        var scale = transform.localScale;
+        scale.x *= -1f;
+        transform.localScale = scale;
+        _seeToRight = !_seeToRight;
     }
 }

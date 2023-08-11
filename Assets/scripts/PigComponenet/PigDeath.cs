@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PigDeath : MonoBehaviour
 {
+    [SerializeField] private float lifeTime;
     public Action OnDie;
 
     private void OnEnable() => OnDie += Kill;
@@ -11,6 +12,6 @@ public class PigDeath : MonoBehaviour
 
     private void Kill()
     {
-        Destroy(gameObject, 1);
+        Destroy(gameObject, lifeTime);
     }
 }
